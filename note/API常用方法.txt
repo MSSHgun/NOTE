@@ -1,0 +1,99 @@
+kk一、String类的常用方法：
+	构造方法：
+  		String(String original):将传入的字符串封装成字符串对象
+  		String(char[] value): 将传入的字符数组封装成字符串对象
+  		String(char[] value, int index, int count):将传入的字符数组的一部分,封装成字符串对象
+
+	String类的判断功能：
+		boolean equals(Object obj)：比较两个字符串是否相同
+		boolean equalsIgnoreCase(String str)：比较两个字符串是否相同, 忽略大小写
+		boolean startsWith(String str)：判断是否以传入字符串开头
+		boolean endsWith(String str)：判断是否以传入字符串结尾
+
+	String类的获取功能：
+		int length()：返回字符个数
+		char charAt(int index)：根据索引找字符
+		int indexOf(String str)：根据字符找索引, 如果找不到, 将返回-1
+		int lastIndexOf(String str)：根据字符找索引, 从后往前找, 返回传入字符最后一次出现的索引位置
+		String substring(int start): 截取字符串, 根据传入索引开始截取, 默认截取到末尾
+		String substring(int start,int end)：根据传入的开始和结束索引, 截取字符串, 包含头, 不不包含尾
+
+	String类的转换功能：
+		char[] toCharArray()：将字符串转换成字符数组
+		String toLowerCase()：将字符串转成小写
+		String toUpperCase()：将字符串转成大写
+
+	去除字符串两端空格	
+ 		String trim()：去除字符串左右两端空格
+	按照指定符号分割字符串
+ 		String[] split(String str)：
+		
+				根据传入字符串切割给定的字符串, 得到一个字符串数组
+				
+				如果遇到特殊数字, 需要加入\\进行转义
+
+
+
+二、StringBuilder类的常用方法：
+ 	:构造方法:
+    	 StringBuilder()				:  创建字符串缓冲区, 缓冲区中没有数据
+	 StringBuilder(String str)		:  创建字符串缓冲区, 缓冲区中最开始带有传入的字符串  将String类型的字符串转换成StringBuilder对象
+
+	 添加功能
+ 		public StringBuilder append(任意类型) : 向字符串缓冲区中追加数据.
+	反转功能
+ 		public StringBuilder reverse()：反转字符串的缓冲区.
+	转换功能
+		public String toString()：将StringBuilder以字符串的形式返回
+
+
+三、补充的方法
+		boolean contains(CharSequence s)：  判断是否包含传入字符串, 是true, 不是false
+		byte[] getBytes() ：                 将字符串拆分成字节数组
+		String replace(char oldChar, char newChar) ：完成字符串的替换 使用新值, 替换老值.
+Integer:	int Integer.parseInt(String s)：             将传入的数字字符串转换成整数
+
+	
+	BigInteger : 作用是用来存储很大的整数(long都存不下)
+	
+		BigInteger(String val) : 根据传入的数字字符串, 封装成一个BigInteger对象
+
+		BigInteger add(BigInteger val)  		--> 加法
+		BigInteger subtract(BigInteger val)  	--> 减法
+		BigInteger multiply(BigInteger val)  	--> 乘法
+		BigInteger divide(BigInteger val)  		--> 除法
+四 Arrays类的常用方法：
+
+	public static String toString(int[] a):		把数组转成字符串
+	 public static void sort(int[] a):		对数组进行升序排序
+	static int binarySearch(int[] a, int key)  : 查找传入元素在传入数组中出现的索引位置, 如果没有找到, 返回-插入点-1
+					 	     --> 注意: 使用该方法的前提, 必须要保证数组有序.
+五  Date类：
+	Date():		--> 创建出来的日期对象就是当前的时间.
+	Date(long date):	--> 根据传入的毫秒值去设置日期对象的时间. 1970 01/01  加毫秒
+	long l = System.currentTimeMillis();	// currentTimeMillis:返回1970年1月1日至今天的毫秒值
+六 SimpleDateFormat类				
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
+		Date a=	sdf.parse(String s )
+		String s = sdf.format(new Date( ))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
