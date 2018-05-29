@@ -1,82 +1,82 @@
-kkÒ»¡¢StringÀàµÄ³£ÓÃ·½·¨£º
-	¹¹Ôì·½·¨£º
-  		String(String original):½«´«ÈëµÄ×Ö·û´®·â×°³É×Ö·û´®¶ÔÏó
-  		String(char[] value): ½«´«ÈëµÄ×Ö·ûÊı×é·â×°³É×Ö·û´®¶ÔÏó
-  		String(char[] value, int index, int count):½«´«ÈëµÄ×Ö·ûÊı×éµÄÒ»²¿·Ö,·â×°³É×Ö·û´®¶ÔÏó
+kkä¸€ã€Stringç±»çš„å¸¸ç”¨æ–¹æ³•ï¼š
+	æ„é€ æ–¹æ³•ï¼š
+  		String(String original):å°†ä¼ å…¥çš„å­—ç¬¦ä¸²å°è£…æˆå­—ç¬¦ä¸²å¯¹è±¡
+  		String(char[] value): å°†ä¼ å…¥çš„å­—ç¬¦æ•°ç»„å°è£…æˆå­—ç¬¦ä¸²å¯¹è±¡
+  		String(char[] value, int index, int count):å°†ä¼ å…¥çš„å­—ç¬¦æ•°ç»„çš„ä¸€éƒ¨åˆ†,å°è£…æˆå­—ç¬¦ä¸²å¯¹è±¡
 
-	StringÀàµÄÅĞ¶Ï¹¦ÄÜ£º
-		boolean equals(Object obj)£º±È½ÏÁ½¸ö×Ö·û´®ÊÇ·ñÏàÍ¬
-		boolean equalsIgnoreCase(String str)£º±È½ÏÁ½¸ö×Ö·û´®ÊÇ·ñÏàÍ¬, ºöÂÔ´óĞ¡Ğ´
-		boolean startsWith(String str)£ºÅĞ¶ÏÊÇ·ñÒÔ´«Èë×Ö·û´®¿ªÍ·
-		boolean endsWith(String str)£ºÅĞ¶ÏÊÇ·ñÒÔ´«Èë×Ö·û´®½áÎ²
+	Stringç±»çš„åˆ¤æ–­åŠŸèƒ½ï¼š
+		boolean equals(Object obj)ï¼šæ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²æ˜¯å¦ç›¸åŒ
+		boolean equalsIgnoreCase(String str)ï¼šæ¯”è¾ƒä¸¤ä¸ªå­—ç¬¦ä¸²æ˜¯å¦ç›¸åŒ, å¿½ç•¥å¤§å°å†™
+		boolean startsWith(String str)ï¼šåˆ¤æ–­æ˜¯å¦ä»¥ä¼ å…¥å­—ç¬¦ä¸²å¼€å¤´
+		boolean endsWith(String str)ï¼šåˆ¤æ–­æ˜¯å¦ä»¥ä¼ å…¥å­—ç¬¦ä¸²ç»“å°¾
 
-	StringÀàµÄ»ñÈ¡¹¦ÄÜ£º
-		int length()£º·µ»Ø×Ö·û¸öÊı
-		char charAt(int index)£º¸ù¾İË÷ÒıÕÒ×Ö·û
-		int indexOf(String str)£º¸ù¾İ×Ö·ûÕÒË÷Òı, Èç¹ûÕÒ²»µ½, ½«·µ»Ø-1
-		int lastIndexOf(String str)£º¸ù¾İ×Ö·ûÕÒË÷Òı, ´ÓºóÍùÇ°ÕÒ, ·µ»Ø´«Èë×Ö·û×îºóÒ»´Î³öÏÖµÄË÷ÒıÎ»ÖÃ
-		String substring(int start): ½ØÈ¡×Ö·û´®, ¸ù¾İ´«ÈëË÷Òı¿ªÊ¼½ØÈ¡, Ä¬ÈÏ½ØÈ¡µ½Ä©Î²
-		String substring(int start,int end)£º¸ù¾İ´«ÈëµÄ¿ªÊ¼ºÍ½áÊøË÷Òı, ½ØÈ¡×Ö·û´®, °üº¬Í·, ²»²»°üº¬Î²
+	Stringç±»çš„è·å–åŠŸèƒ½ï¼š
+		int length()ï¼šè¿”å›å­—ç¬¦ä¸ªæ•°
+		char charAt(int index)ï¼šæ ¹æ®ç´¢å¼•æ‰¾å­—ç¬¦
+		int indexOf(String str)ï¼šæ ¹æ®å­—ç¬¦æ‰¾ç´¢å¼•, å¦‚æœæ‰¾ä¸åˆ°, å°†è¿”å›-1
+		int lastIndexOf(String str)ï¼šæ ¹æ®å­—ç¬¦æ‰¾ç´¢å¼•, ä»åå¾€å‰æ‰¾, è¿”å›ä¼ å…¥å­—ç¬¦æœ€åä¸€æ¬¡å‡ºç°çš„ç´¢å¼•ä½ç½®
+		String substring(int start): æˆªå–å­—ç¬¦ä¸², æ ¹æ®ä¼ å…¥ç´¢å¼•å¼€å§‹æˆªå–, é»˜è®¤æˆªå–åˆ°æœ«å°¾
+		String substring(int start,int end)ï¼šæ ¹æ®ä¼ å…¥çš„å¼€å§‹å’Œç»“æŸç´¢å¼•, æˆªå–å­—ç¬¦ä¸², åŒ…å«å¤´, ä¸ä¸åŒ…å«å°¾
 
-	StringÀàµÄ×ª»»¹¦ÄÜ£º
-		char[] toCharArray()£º½«×Ö·û´®×ª»»³É×Ö·ûÊı×é
-		String toLowerCase()£º½«×Ö·û´®×ª³ÉĞ¡Ğ´
-		String toUpperCase()£º½«×Ö·û´®×ª³É´óĞ´
+	Stringç±»çš„è½¬æ¢åŠŸèƒ½ï¼š
+		char[] toCharArray()ï¼šå°†å­—ç¬¦ä¸²è½¬æ¢æˆå­—ç¬¦æ•°ç»„
+		String toLowerCase()ï¼šå°†å­—ç¬¦ä¸²è½¬æˆå°å†™
+		String toUpperCase()ï¼šå°†å­—ç¬¦ä¸²è½¬æˆå¤§å†™
 
-	È¥³ı×Ö·û´®Á½¶Ë¿Õ¸ñ	
- 		String trim()£ºÈ¥³ı×Ö·û´®×óÓÒÁ½¶Ë¿Õ¸ñ
-	°´ÕÕÖ¸¶¨·ûºÅ·Ö¸î×Ö·û´®
- 		String[] split(String str)£º
+	å»é™¤å­—ç¬¦ä¸²ä¸¤ç«¯ç©ºæ ¼	
+ 		String trim()ï¼šå»é™¤å­—ç¬¦ä¸²å·¦å³ä¸¤ç«¯ç©ºæ ¼
+	æŒ‰ç…§æŒ‡å®šç¬¦å·åˆ†å‰²å­—ç¬¦ä¸²
+ 		String[] split(String str)ï¼š
 		
-				¸ù¾İ´«Èë×Ö·û´®ÇĞ¸î¸ø¶¨µÄ×Ö·û´®, µÃµ½Ò»¸ö×Ö·û´®Êı×é
+				æ ¹æ®ä¼ å…¥å­—ç¬¦ä¸²åˆ‡å‰²ç»™å®šçš„å­—ç¬¦ä¸², å¾—åˆ°ä¸€ä¸ªå­—ç¬¦ä¸²æ•°ç»„
 				
-				Èç¹ûÓöµ½ÌØÊâÊı×Ö, ĞèÒª¼ÓÈë\\½øĞĞ×ªÒå
+				å¦‚æœé‡åˆ°ç‰¹æ®Šæ•°å­—, éœ€è¦åŠ å…¥\\è¿›è¡Œè½¬ä¹‰
 
 
 
-¶ş¡¢StringBuilderÀàµÄ³£ÓÃ·½·¨£º
- 	:¹¹Ôì·½·¨:
-    	 StringBuilder()				:  ´´½¨×Ö·û´®»º³åÇø, »º³åÇøÖĞÃ»ÓĞÊı¾İ
-	 StringBuilder(String str)		:  ´´½¨×Ö·û´®»º³åÇø, »º³åÇøÖĞ×î¿ªÊ¼´øÓĞ´«ÈëµÄ×Ö·û´®  ½«StringÀàĞÍµÄ×Ö·û´®×ª»»³ÉStringBuilder¶ÔÏó
+äºŒã€StringBuilderç±»çš„å¸¸ç”¨æ–¹æ³•ï¼š
+ 	:æ„é€ æ–¹æ³•:
+    	 StringBuilder()				:  åˆ›å»ºå­—ç¬¦ä¸²ç¼“å†²åŒº, ç¼“å†²åŒºä¸­æ²¡æœ‰æ•°æ®
+	 StringBuilder(String str)		:  åˆ›å»ºå­—ç¬¦ä¸²ç¼“å†²åŒº, ç¼“å†²åŒºä¸­æœ€å¼€å§‹å¸¦æœ‰ä¼ å…¥çš„å­—ç¬¦ä¸²  å°†Stringç±»å‹çš„å­—ç¬¦ä¸²è½¬æ¢æˆStringBuilderå¯¹è±¡
 
-	 Ìí¼Ó¹¦ÄÜ
- 		public StringBuilder append(ÈÎÒâÀàĞÍ) : Ïò×Ö·û´®»º³åÇøÖĞ×·¼ÓÊı¾İ.
-	·´×ª¹¦ÄÜ
- 		public StringBuilder reverse()£º·´×ª×Ö·û´®µÄ»º³åÇø.
-	×ª»»¹¦ÄÜ
-		public String toString()£º½«StringBuilderÒÔ×Ö·û´®µÄĞÎÊ½·µ»Ø
+	 æ·»åŠ åŠŸèƒ½
+ 		public StringBuilder append(ä»»æ„ç±»å‹) : å‘å­—ç¬¦ä¸²ç¼“å†²åŒºä¸­è¿½åŠ æ•°æ®.
+	åè½¬åŠŸèƒ½
+ 		public StringBuilder reverse()ï¼šåè½¬å­—ç¬¦ä¸²çš„ç¼“å†²åŒº.
+	è½¬æ¢åŠŸèƒ½
+		public String toString()ï¼šå°†StringBuilderä»¥å­—ç¬¦ä¸²çš„å½¢å¼è¿”å›
 
 
-Èı¡¢²¹³äµÄ·½·¨
-		boolean contains(CharSequence s)£º  ÅĞ¶ÏÊÇ·ñ°üº¬´«Èë×Ö·û´®, ÊÇtrue, ²»ÊÇfalse
-		byte[] getBytes() £º                 ½«×Ö·û´®²ğ·Ö³É×Ö½ÚÊı×é
-		String replace(char oldChar, char newChar) £ºÍê³É×Ö·û´®µÄÌæ»» Ê¹ÓÃĞÂÖµ, Ìæ»»ÀÏÖµ.
-Integer:	int Integer.parseInt(String s)£º             ½«´«ÈëµÄÊı×Ö×Ö·û´®×ª»»³ÉÕûÊı
+ä¸‰ã€è¡¥å……çš„æ–¹æ³•
+		boolean contains(CharSequence s)ï¼š  åˆ¤æ–­æ˜¯å¦åŒ…å«ä¼ å…¥å­—ç¬¦ä¸², æ˜¯true, ä¸æ˜¯false
+		byte[] getBytes() ï¼š                 å°†å­—ç¬¦ä¸²æ‹†åˆ†æˆå­—èŠ‚æ•°ç»„
+		String replace(char oldChar, char newChar) ï¼šå®Œæˆå­—ç¬¦ä¸²çš„æ›¿æ¢ ä½¿ç”¨æ–°å€¼, æ›¿æ¢è€å€¼.
+Integer:	int Integer.parseInt(String s)ï¼š             å°†ä¼ å…¥çš„æ•°å­—å­—ç¬¦ä¸²è½¬æ¢æˆæ•´æ•°
 
 	
-	BigInteger : ×÷ÓÃÊÇÓÃÀ´´æ´¢ºÜ´óµÄÕûÊı(long¶¼´æ²»ÏÂ)
+	BigInteger : ä½œç”¨æ˜¯ç”¨æ¥å­˜å‚¨å¾ˆå¤§çš„æ•´æ•°(longéƒ½å­˜ä¸ä¸‹)
 	
-		BigInteger(String val) : ¸ù¾İ´«ÈëµÄÊı×Ö×Ö·û´®, ·â×°³ÉÒ»¸öBigInteger¶ÔÏó
+		BigInteger(String val) : æ ¹æ®ä¼ å…¥çš„æ•°å­—å­—ç¬¦ä¸², å°è£…æˆä¸€ä¸ªBigIntegerå¯¹è±¡
 
-		BigInteger add(BigInteger val)  		--> ¼Ó·¨
-		BigInteger subtract(BigInteger val)  	--> ¼õ·¨
-		BigInteger multiply(BigInteger val)  	--> ³Ë·¨
-		BigInteger divide(BigInteger val)  		--> ³ı·¨
-ËÄ ArraysÀàµÄ³£ÓÃ·½·¨£º
+		BigInteger add(BigInteger val)  		--> åŠ æ³•
+		BigInteger subtract(BigInteger val)  	--> å‡æ³•
+		BigInteger multiply(BigInteger val)  	--> ä¹˜æ³•
+		BigInteger divide(BigInteger val)  		--> é™¤æ³•
+å›› Arraysç±»çš„å¸¸ç”¨æ–¹æ³•ï¼š
 
-	public static String toString(int[] a):		°ÑÊı×é×ª³É×Ö·û´®
-	 public static void sort(int[] a):		¶ÔÊı×é½øĞĞÉıĞòÅÅĞò
-	static int binarySearch(int[] a, int key)  : ²éÕÒ´«ÈëÔªËØÔÚ´«ÈëÊı×éÖĞ³öÏÖµÄË÷ÒıÎ»ÖÃ, Èç¹ûÃ»ÓĞÕÒµ½, ·µ»Ø-²åÈëµã-1
-					 	     --> ×¢Òâ: Ê¹ÓÃ¸Ã·½·¨µÄÇ°Ìá, ±ØĞëÒª±£Ö¤Êı×éÓĞĞò.
-Îå  DateÀà£º
-	Date():		--> ´´½¨³öÀ´µÄÈÕÆÚ¶ÔÏó¾ÍÊÇµ±Ç°µÄÊ±¼ä.
-	Date(long date):	--> ¸ù¾İ´«ÈëµÄºÁÃëÖµÈ¥ÉèÖÃÈÕÆÚ¶ÔÏóµÄÊ±¼ä. 1970 01/01  ¼ÓºÁÃë
-	long l = System.currentTimeMillis();	// currentTimeMillis:·µ»Ø1970Äê1ÔÂ1ÈÕÖÁ½ñÌìµÄºÁÃëÖµ
-Áù SimpleDateFormatÀà				
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMMÔÂddÈÕ");
+	public static String toString(int[] a):		æŠŠæ•°ç»„è½¬æˆå­—ç¬¦ä¸²
+	 public static void sort(int[] a):		å¯¹æ•°ç»„è¿›è¡Œå‡åºæ’åº
+	static int binarySearch(int[] a, int key)  : æŸ¥æ‰¾ä¼ å…¥å…ƒç´ åœ¨ä¼ å…¥æ•°ç»„ä¸­å‡ºç°çš„ç´¢å¼•ä½ç½®, å¦‚æœæ²¡æœ‰æ‰¾åˆ°, è¿”å›-æ’å…¥ç‚¹-1
+					 	     --> æ³¨æ„: ä½¿ç”¨è¯¥æ–¹æ³•çš„å‰æ, å¿…é¡»è¦ä¿è¯æ•°ç»„æœ‰åº.
+äº”  Dateç±»ï¼š
+	Date():		--> åˆ›å»ºå‡ºæ¥çš„æ—¥æœŸå¯¹è±¡å°±æ˜¯å½“å‰çš„æ—¶é—´.
+	Date(long date):	--> æ ¹æ®ä¼ å…¥çš„æ¯«ç§’å€¼å»è®¾ç½®æ—¥æœŸå¯¹è±¡çš„æ—¶é—´. 1970 01/01  åŠ æ¯«ç§’
+	long l = System.currentTimeMillis();	// currentTimeMillis:è¿”å›1970å¹´1æœˆ1æ—¥è‡³ä»Šå¤©çš„æ¯«ç§’å€¼
+å…­ SimpleDateFormatç±»				
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´MMæœˆddæ—¥");
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/");
 		Date a=	sdf.parse(String s )
-		String s = sdf.format(new Date( ))
+		String s = sdf.format(new Date( ));
 
 
 
