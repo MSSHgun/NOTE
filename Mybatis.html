@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mybatis</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+<style type="text/css">
+.highlight  { background: #ffffff; }
+.highlight .c { color: #999988; font-style: italic } /* Comment */
+.highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
+.highlight .k { font-weight: bold } /* Keyword */
+.highlight .o { font-weight: bold } /* Operator */
+.highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
+.highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
+.highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #aa0000 } /* Generic.Error */
+.highlight .gh { color: #999999 } /* Generic.Heading */
+.highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
+.highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #555555 } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #aaaaaa } /* Generic.Subheading */
+.highlight .gt { color: #aa0000 } /* Generic.Traceback */
+.highlight .kc { font-weight: bold } /* Keyword.Constant */
+.highlight .kd { font-weight: bold } /* Keyword.Declaration */
+.highlight .kp { font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #009999 } /* Literal.Number */
+.highlight .s { color: #d14 } /* Literal.String */
+.highlight .na { color: #008080 } /* Name.Attribute */
+.highlight .nb { color: #0086B3 } /* Name.Builtin */
+.highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
+.highlight .no { color: #008080 } /* Name.Constant */
+.highlight .ni { color: #800080 } /* Name.Entity */
+.highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
+.highlight .nn { color: #555555 } /* Name.Namespace */
+.highlight .nt { color: #000080 } /* Name.Tag */
+.highlight .nv { color: #008080 } /* Name.Variable */
+.highlight .ow { font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #009999 } /* Literal.Number.Float */
+.highlight .mh { color: #009999 } /* Literal.Number.Hex */
+.highlight .mi { color: #009999 } /* Literal.Number.Integer */
+.highlight .mo { color: #009999 } /* Literal.Number.Oct */
+.highlight .sb { color: #d14 } /* Literal.String.Backtick */
+.highlight .sc { color: #d14 } /* Literal.String.Char */
+.highlight .sd { color: #d14 } /* Literal.String.Doc */
+.highlight .s2 { color: #d14 } /* Literal.String.Double */
+.highlight .se { color: #d14 } /* Literal.String.Escape */
+.highlight .sh { color: #d14 } /* Literal.String.Heredoc */
+.highlight .si { color: #d14 } /* Literal.String.Interpol */
+.highlight .sx { color: #d14 } /* Literal.String.Other */
+.highlight .sr { color: #009926 } /* Literal.String.Regex */
+.highlight .s1 { color: #d14 } /* Literal.String.Single */
+.highlight .ss { color: #990073 } /* Literal.String.Symbol */
+.highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #008080 } /* Name.Variable.Class */
+.highlight .vg { color: #008080 } /* Name.Variable.Global */
+.highlight .vi { color: #008080 } /* Name.Variable.Instance */
+.highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
+.pl-c {
+    color: #969896;
+}
+
+.pl-c1,.pl-mdh,.pl-mm,.pl-mp,.pl-mr,.pl-s1 .pl-v,.pl-s3,.pl-sc,.pl-sv {
+    color: #0086b3;
+}
+
+.pl-e,.pl-en {
+    color: #795da3;
+}
+
+.pl-s1 .pl-s2,.pl-smi,.pl-smp,.pl-stj,.pl-vo,.pl-vpf {
+    color: #333;
+}
+
+.pl-ent {
+    color: #63a35c;
+}
+
+.pl-k,.pl-s,.pl-st {
+    color: #a71d5d;
+}
+
+.pl-pds,.pl-s1,.pl-s1 .pl-pse .pl-s2,.pl-sr,.pl-sr .pl-cce,.pl-sr .pl-sra,.pl-sr .pl-sre,.pl-src,.pl-v {
+    color: #df5000;
+}
+
+.pl-id {
+    color: #b52a1d;
+}
+
+.pl-ii {
+    background-color: #b52a1d;
+    color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+    color: #63a35c;
+    font-weight: bold;
+}
+
+.pl-ml {
+    color: #693a17;
+}
+
+.pl-mh,.pl-mh .pl-en,.pl-ms {
+    color: #1d3e81;
+    font-weight: bold;
+}
+
+.pl-mq {
+    color: #008080;
+}
+
+.pl-mi {
+    color: #333;
+    font-style: italic;
+}
+
+.pl-mb {
+    color: #333;
+    font-weight: bold;
+}
+
+.pl-md,.pl-mdhf {
+    background-color: #ffecec;
+    color: #bd2c00;
+}
+
+.pl-mdht,.pl-mi1 {
+    background-color: #eaffea;
+    color: #55a532;
+}
+
+.pl-mdr {
+    color: #795da3;
+    font-weight: bold;
+}
+
+.pl-mo {
+    color: #1d3e81;
+}
+.task-list {
+padding-left:10px;
+margin-bottom:0;
+}
+
+.task-list li {
+    margin-left: 20px;
+}
+
+.task-list-item {
+list-style-type:none;
+padding-left:10px;
+}
+
+.task-list-item label {
+font-weight:400;
+}
+
+.task-list-item.enabled label {
+cursor:pointer;
+}
+
+.task-list-item+.task-list-item {
+margin-top:3px;
+}
+
+.task-list-item-checkbox {
+display:inline-block;
+margin-left:-20px;
+margin-right:3px;
+vertical-align:1px;
+}
+</style>
+</head>
+<body>
+<h2 id="mybatis-">mybatis学习日记</h2>
+<ul>
+<li>1.1  什么是 MyBatis ？<br>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以对配置和原生Map使用简单的 XML 或注解，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java对象)映射成数据库中的记录。</li></ul>
+<blockquote>
+<ul>
+<li><p><strong> SqlMapConfig.xml</strong>：mybatis的核心配置文件，主要用于配置数据库连接等一些信息</p>
+</li><li><p><strong> Mappers.xm</strong>l：这些配置文件有多个，每一个配置文件对应数据库当中的一张表，主要用于我们数据库中的字段与我们JavaBean实体类中的字段的相互映射，mappers.xml一定要被sqlMapConfig.xml加载</p>
+</li><li><p><strong>SqlSessionFactory</strong>：工厂类，主要用于产生我们的sqlSession</p>
+</li><li><p><strong>SqlSession</strong>：mybatis里面的一个核心的类，用于操作我们的数据库，通过executor来操作我们的数据库，executor是mybaits里面一个封装的对象，不需要我们去处理</p>
+</li><li><p><strong>MappedStatement</strong>：主要作用就是连接我们的输入映射与我们的输出映射，将我们的输入映射拿到之后，去执行我们数据库操作，然后将执行后的结果包装成我们的输出映射</p>
+</li><li>mybatis的网址:   <a href="http://www.mybatis.org/mybatis-3/zh/index.html">http://www.mybatis.org/mybatis-3/zh/index.html</a><h1 id="-">二 入门程序</h1>
+<strong>在写程序之前,我们要先准备环境:</strong></li></ul>
+</blockquote>
+<p>主键查询</p>
+<ul>
+<li>2.1     Maven : Web项目</li><li>2.2    mybatis包: <a href="http://mvnrepository.com/artifact/org.mybatis/mybatis">http://mvnrepository.com/artifact/org.mybatis/mybatis</a> 选择相应的版本</li><li>2.3    mysql包: <a href="http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.38">http://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.38</a></li><li><p>2.4     在资源目录下配置        </p>
+<ul>
+<li><p>mapper.xml</p>
+<pre><code>  &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+ &lt;!DOCTYPE mapper
+   PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+   &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+   &lt;!-- namespace:名称空间  --&gt;
+ &lt;mapper namespace=&quot;test&quot;&gt;    
+  &lt;/mapper&gt;
+</code></pre></li><li><p>SqlMapConfig.xml </p>
+<pre><code>     &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+     &lt;!DOCTYPE configuration
+       PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+       &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+     &lt;configuration&gt;
+       &lt;environments default=&quot;development&quot;&gt;
+         &lt;environment id=&quot;development&quot;&gt;
+           &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+           &lt;!-- 表示使用连接池连接数据库 --&gt;
+           &lt;dataSource type=&quot;POOLED&quot;&gt;
+           &lt;!-- 驱动的引用 --&gt;
+             &lt;property name=&quot;driver&quot; value=&quot;com.mysql.jdbc.Driver&quot;/&gt;
+             &lt;property name=&quot;url&quot; value=&quot;jdbc:mysql://localhost:3306/mybatis?characterEncoding=utf-8&quot;/&gt;
+             &lt;!-- 数据库的用户名 --&gt;
+             &lt;property name=&quot;username&quot; value=&quot;root&quot;/&gt;
+             &lt;!-- 数据库密码 --&gt;
+             &lt;property name=&quot;password&quot; value=&quot;password&quot;/&gt;
+           &lt;/dataSource&gt;
+         &lt;/environment&gt;
+       &lt;/environments&gt;
+       &lt;mappers&gt;
+           &lt;!-- 一组 mapper 映射器（这些 mapper 的 XML 文件包含了 SQL 代码和映射定义信息） --&gt;
+         &lt;mapper resource=&quot;mapper.xml&quot;/&gt;
+       &lt;/mappers&gt;
+     &lt;/configuration&gt;&gt;
+</code></pre></li><li><p>log4j.properties    在控制台打印我们的SQL语句</p>
+<pre><code>  # Global logging configuration
+  log4j.rootLogger=DEBUG, stdout
+  # Console output...
+  log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+  log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+  log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n        
+</code></pre><p>  还需要4个jar包:</p>
+<pre><code>  &lt;dependency&gt;
+      &lt;groupId&gt;org.bgee.log4jdbc-log4j2&lt;/groupId&gt;
+      &lt;artifactId&gt;log4jdbc-log4j2-jdbc4.1&lt;/artifactId&gt;
+      &lt;version&gt;1.16&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+      &lt;artifactId&gt;slf4j-api&lt;/artifactId&gt;
+      &lt;version&gt;1.7.13&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;
+      &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;
+      &lt;version&gt;1.7.5&lt;/version&gt;
+  &lt;/dependency&gt;
+
+&lt;!-- https://mvnrepository.com/artifact/log4j/log4j --&gt;
+  &lt;dependency&gt;
+      &lt;groupId&gt;log4j&lt;/groupId&gt;
+      &lt;artifactId&gt;log4j&lt;/artifactId&gt;
+      &lt;version&gt;1.2.16&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre></li></ul>
+</li><li><p>2.5 创建javaBean类,<strong>属性name要和数据库字段的name保持一致</strong></p>
+</li><li>2.6 创建测试类 在这里我们使用单元测试<pre><code>       @Test
+      public void getUserId() throws IOException{
+          //获取工厂对象
+          SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+          //使用builder读取Mybatis的核心配置文件,然偶才可以创建SqlSesiionFactory
+          //获取SqlSessionFactory
+          SqlSessionFactory build = builder.build(Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;));
+          //获取SqlSession
+          SqlSession session = build.openSession();
+          /**
+           * 第一个参数:sql的Id
+           * 第二个参数: 传入的参数值
+           */
+          Object session = session.selectOne(&quot;getUserId&quot;, 67);
+          session.close();
+          System.out.println(selectOne.toString());
+      }
+</code></pre></li><li>2.7 在mapper.xml中写入映射语句<pre><code>       &lt;mapper namespace=&quot;test&quot;&gt;
+          &lt;!--  
+              id: sqlId 和session.selectOne(&quot;getUserId&quot;, 68);的第一个参数保持一致
+              resultType: 返回结果的类型,如果是对象的话我们就要写类的全限定名
+              parameterType: 参数类型 , 可以自动拆装箱
+              #{id} : 占位符 .
+              select还有许多的属性,这里只写必须要的,如果想看其他的属性可以去官网查看
+           --&gt;
+           &lt;select id=&quot;getUserId&quot; resultType=&quot;com.zhz.demo.User&quot; parameterType=&quot;int&quot;&gt;
+               select * from user where id = #{id}
+           &lt;/select&gt;
+      &lt;/mapper&gt;
+</code></pre></li></ul>
+<p>到这里我们的入门程序就结束了,有没有感觉到特别简单那!~~~</p>
+<h2 id="-">三 模糊查询</h2>
+<ul>
+<li><p>3.1  测试类:</p>
+<pre><code>      *@Test
+  public void getUserLike() throws IOException{
+
+      SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+
+      SqlSessionFactory build = builder.build(Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;));
+
+      SqlSession openSession = build.openSession();
+
+      List&lt;Object&gt; user = openSession.selectList(&quot;getUserLike&quot;,&quot;海&quot; );
+      openSession.close();
+      for (Object object : user) {
+          System.out.println(object.toString());
+      }
+  }
+</code></pre></li><li><p>3.2        mapper.xml:</p>
+<pre><code>   &lt;select id=&quot;getUserLike&quot; resultType=&quot;com.zhz.demo.User&quot; parameterType=&quot;String&quot;&gt;
+    &lt;!-- 
+        #{}与${}的区别：
+
+       #{}用作占位符，在接受简单数据类型的时候，大括号里面的参数可以随便写
+       ${}表示连接符，连接我们传入的参数与左右两边的字符串，当我们传入简单数据类型的时候，大括号里面的值只能写value
+     --&gt;
+        select * from user where username like  &#39;%${value}%&#39;
+    &lt;/select&gt;
+</code></pre><p><strong>模糊查询要特变注意&#39;%${value}%&#39;的写法,不要写错,还有一点,在写程序的过程中,能复制的就不要手敲,因为手敲容易敲错,导致程序出错</strong></p>
+</li></ul>
+<h2 id="-">四 插入数据</h2>
+<ul>
+<li><p>4.1 测试类    </p>
+<pre><code>      @Test
+      public void insertUser() throws IOException{
+
+          SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+
+          SqlSessionFactory build = builder.build(Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;));
+
+          SqlSession session = build.openSession();
+
+          User user = new User();
+          //id不用设置,他是自增长的
+          user.setUserName(&quot;张大大&quot;);
+          user.setPassword(&quot;password&quot;);
+
+          session.insert(&quot;insertUser&quot;, user);
+          //数据库操作,出了查询外,其他操作都需要提交
+          session.commit();
+
+          session.close();
+      } 
+</code></pre></li><li>4.2 mapper.xml <pre><code>  &lt;!-- 没有反回值,可以不写`--&gt;
+  &lt;insert id=&quot;insertUser&quot; parameterType=&quot;com.zhz.demo.User&quot;&gt;
+       insert into user (username,password) values (#{username},#{password})
+   &lt;/insert&gt;
+</code></pre></li></ul>
+<h2 id="-">五 自增主键返回</h2>
+<p>SELECT LAST_INSRT_ID() 表示最后一次插入数据的主键</p>
+<ul>
+<li>5.1 测试类<pre><code>          .......
+          session.commit();
+          //获取主键
+          System.out.println(user.getId());
+          session.close();
+          ....
+</code></pre>  其他代码我就省略了,在提交之后就可以获取主键的值了</li><li><p>5.2 mapper.xml</p>
+<ul>
+<li>keyProperty    （仅对 insert 和 update 有用）唯一标记一个属性，MyBatis 会通过 getGeneratedKeys 的返回值或者通过 insert 语句的 selectKey 子元素设置它的键值，默认：unset。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。<br><strong>指定我们对象的哪个属性,这里是User对象的id属性</strong></li><li>keyColumn    （仅对 insert 和 update 有用）通过生成的键值设置表中的列名，这个设置仅在某些数据库（像 PostgreSQL）是必须的，当主键列不是表中的第一列的时候需要设置。如果希望得到多个生成的列，也可以是逗号分隔的属性名称列表。<br><strong>简单来说就是指定我们表单的那个字段 这里是Id</strong></li><li><p>order   表示我们的这个sql语句与插入的sql语句执行的先后顺序  AFTER 后</p>
+<pre><code>  &lt;insert id=&quot;insertUser&quot; parameterType=&quot;com.zhz.demo.User&quot;&gt;
+           &lt;!-- order 表示我们的这个sql语句与插入的sql语句执行的先后顺序  AFTER 后--&gt;
+           &lt;selectKey keyColumn=&quot;id&quot; keyProperty=&quot;id&quot; resultType=&quot;int&quot; order=&quot;AFTER&quot;&gt;
+           SELECT  LAST_INSERT_ID();
+           &lt;!-- SELECT UUID() 在插入数据之前执行 --&gt;
+           &lt;/selectKey&gt;
+           insert into user (username,password) values (#{username},#{password})
+   &lt;/insert&gt;
+</code></pre></li></ul>
+</li></ul>
+<h2 id="-">六 更新操作</h2>
+<p>在这里我们对程序做一些优化</p>
+<p>添加成员属性  : private  SqlSession sqlSession;</p>
+<p>添加方法,用于sqlSession的初始化:</p>
+<pre><code>        @Before
+        public  void init() throws IOException{
+
+            SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+
+            SqlSessionFactory build = builder.build(Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;));
+
+            sqlSession = build.openSession();
+
+        }
+</code></pre><p>这样就可以避免我们重复的去写获取SqlSession对象的代码.</p>
+<blockquote>
+<ul>
+<li>@Before: 方法最先执行</li></ul>
+</blockquote>
+<ul>
+<li><p>6.1 测试类</p>
+<pre><code>  @Test
+  public void updateUser() throws IOException{
+
+      User user = new User();
+      //设置要更新数据的主键
+      user.setId(65);
+      user.setUserName(&quot;曼殊沙华&quot;);
+      user.setPassword(&quot;zhang&quot;);
+
+      //SqlSession对象为类的成员属性
+      sqlSession.update(&quot;updateUser&quot;,user);
+
+      sqlSession.commit();
+      sqlSession.close();
+</code></pre></li><li>6.2 mapper.xml<pre><code>  &lt;update id=&quot;updateUser&quot; parameterType=&quot;com.zhz.demo.User&quot;&gt;
+   update user set username = #{username},password = #{password} where id = #{id}
+   &lt;/update&gt;
+</code></pre><strong><br>在这里删除就不演示了.删除和修改大致相同,这里写一下删除的映射语句吧</strong><br>  DELETE   FROM USER WHERE ID = #{id} </li></ul>
+<h2 id="-">七 基于接口与实现类的方式实现数据库的操作(很少使用)</h2>
+<ul>
+<li>7.1 创建一个interface UserDao</li><li>7.2 创建一个实现类 UserDaoImpl</li><li>7.3 创建一个演示类 UserDemo</li><li><p>7.4  UserDao:</p>
+<pre><code>  User getUserById(int i);
+
+  List&lt;User&gt; getUserLike(String string);
+
+  void deleteUser(int i);
+</code></pre></li><li><p>7.5 UserDaoImpl:</p>
+<pre><code>          private  SqlSession sqlSession;
+          //有参构造
+          public UserDaoImpl(SqlSession sqlSession) {
+              super();
+              this.sqlSession = sqlSession;
+          }
+
+          public User getUserById(int i) {
+              User user = sqlSession.selectOne(&quot;getUserById&quot;, i);
+              sqlSession.close();
+              return user;
+          }
+
+          public List&lt;User&gt; getUserLike(String string) {
+              List&lt;User&gt; list = sqlSession.selectList(&quot;getUserLike&quot;, string);
+              sqlSession.close();
+              return list;
+          }
+
+          public void deleteUser(int i) {
+              sqlSession.delete(&quot;deleteUser&quot;,i);
+              sqlSession.commit();
+              sqlSession.close();
+          }
+</code></pre></li><li><p>7.6    UserDemo</p>
+<pre><code>  *private  SqlSession sqlSession;
+
+  @Before
+  public  void setSession() throws IOException{
+
+      SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+
+      SqlSessionFactory build = builder.build(Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;));
+
+      sqlSession = build.openSession();
+
+  }
+  /**
+   * 通过Id查询
+   */
+  @Test
+  public void getUserById(){
+      UserDao dao = new UserDaoImpl(sqlSession);
+      User user = dao.getUserById(65);
+
+      System.out.println(user.toString());
+  }
+  /**
+   * 模糊查询
+   */
+
+  @Test
+  public void getUserLike(){
+      UserDao dao = new UserDaoImpl(sqlSession);
+      List&lt;User&gt; user  = dao.getUserLike(&quot;曼&quot;);
+      for (User user2 : user) {
+          System.out.println(user2.toString());
+      }
+  }
+  /**
+   * 删除
+   */
+  @Test
+  public void deleteUser(){
+      UserDao dao = new UserDaoImpl(sqlSession);
+      dao.deleteUser(65);
+  }
+</code></pre></li><li>7.7 映射语句就不写了</li></ul>
+<h2 id="-">八 基于接口代理的方式实现数据库的操作(推荐使用)</h2>
+<p>基于这种操作有几点要求:</p>
+<blockquote>
+<ul>
+<li>1、    namespace要是接口的全限定名</li><li>2、    接口名称与我们mapper文件名称保持一致</li><li>3、    接口位置要与我们xml位置保持一致,在同一级目录下</li><li>4、    接口中的方法名就是我们mapper文件中的sqlid</li></ul>
+</blockquote>
+<ul>
+<li><p>7.1 创建接口类 interface UserMapper</p>
+</li><li><p>7.2 创建Mapper XML 文件 UserMapper.xml</p>
+</li><li><p>7.3  创建测试类 UserMapperTest()</p>
+</li><li><p>7.5 更改Mapper映射器  </p>
+<pre><code>   在 SqlMapConfig.xml中将&lt;mapper resource=&quot;mapper.xml&quot;/&gt;
+   更改为:  &lt;mapper class=&quot;com.zhz.demo3.UserMapper&quot;/&gt;
+</code></pre></li><li><p>7.6 UserMapper.xml</p>
+<pre><code>  &lt;mapper namespace=&quot;com.zhz.demo3.UserMapper&quot;&gt;
+
+      &lt;select id=&quot;getUserById&quot; parameterType=&quot;int&quot; resultType=&quot;com.zhz.demo.User&quot;&gt;
+
+      select * from user where  id = #{id}
+
+      &lt;/select&gt;
+
+      &lt;select id=&quot;getUserLike&quot; parameterType=&quot;String&quot; resultType=&quot;com.zhz.demo.User&quot;&gt;
+
+          select * from user where username like &#39;%${value}%&#39;
+
+      &lt;/select&gt;
+
+      &lt;insert id=&quot;insertUser&quot; parameterType=&quot;com.zhz.demo.User&quot;&gt;
+          insert into user (username,password) values (#{username},#{password})
+      &lt;/insert&gt;
+</code></pre><p>  </mapper></p>
+</li><li><p>7.7 UserMapperTest    </p>
+<pre><code>      *private  SqlSession sqlSession;
+
+      @Before
+      public  void init() throws IOException{
+
+          SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+
+          SqlSessionFactory build = builder.build(Resources.getResourceAsStream(&quot;SqlMapConfig.xml&quot;));
+
+          sqlSession = build.openSession();
+
+      }
+      /**
+       * 查询
+       */
+      @Test
+      public void test(){
+          //使用JDK的动态代理来获取UserMapper接口的代理对象
+          UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+          //User user = mapper.getUserById(66);
+          List&lt;User&gt; list = mapper.getUserLike(&quot;曼&quot;);
+
+          for(User user: list){
+              System.out.println(user.toString());
+          }
+
+          sqlSession.close();
+
+      }
+      /*
+       * 插入
+       */
+      @Test
+      public void insertUser(){
+          UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+          User user = new User();
+          user.setUserName(&quot;小灰灰&quot;);
+          user.setPassword(&quot;1234&quot;);
+
+          mapper.insertUser(user);
+
+          sqlSession.commit();
+          sqlSession.close();
+
+      }
+</code></pre></li></ul>
+<h2 id="-">九 引用外部数据库定义信息来实现数据库的连接</h2>
+<p>通过.properties文件来引入外部数据库</p>
+<ul>
+<li>9.1 在资源目录下创建文件 jdbc.properties<pre><code>  jdbc.driver=com.mysql.jdbc.Driver
+  jdbc.url=jdbc:mysql://localhost:3306/product_manage?characterEncoding=utf-8
+  jdbc.username=root
+  jdbc.password=array
+</code></pre></li><li><p>9.2 在SqlMapConfig.xml中设置</p>
+<pre><code>  &lt;properties resource=&quot;jdbc.properties&quot;&gt;
+      &lt;property name=&quot;jdbc.driver&quot; value=&quot;&quot;/&gt;
+      &lt;property name=&quot;jdbc.url&quot; value=&quot;&quot;/&gt;
+      &lt;property name=&quot;jdbc.username&quot; value=&quot;root&quot;/&gt;
+      &lt;property name=&quot;jdbc.password&quot; value=&quot;fdsafd&quot;/&gt;
+  &lt;/properties&gt;
+</code></pre><p>  <strong>如果 jdbc.properties和property中都有相同属性的值,则引用按照就近原则,先去property中找,找不到再去jdbc.properties中找</strong></p>
+</li></ul>
+<h2 id="-mybatis-">十 mybatis的别名配置</h2>
+<ul>
+<li><p>10.1类型别名是为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。例如:</p>
+<pre><code>  &lt;typeAliases&gt;
+    &lt;typeAlias alias=&quot;Author&quot; type=&quot;domain.blog.Author&quot;/&gt;
+    &lt;typeAlias alias=&quot;Blog&quot; type=&quot;domain.blog.Blog&quot;/&gt;
+    &lt;typeAlias alias=&quot;Section&quot; type=&quot;domain.blog.Section&quot;/&gt;
+    &lt;typeAlias alias=&quot;Tag&quot; type=&quot;domain.blog.Tag&quot;/&gt;
+  &lt;/typeAliases&gt;
+</code></pre><blockquote>
+<ul>
+<li>当这样配置时，Blog可以用在任何使用domain.blog.Blog的地方。</li></ul>
+</blockquote>
+</li><li><p>10.2 使用包扫描的方式</p>
+<ul>
+<li>也可以指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean，比如: <pre><code>  &lt;typeAliases&gt;
+    &lt;package name=&quot;domain.blog&quot;/&gt;
+  &lt;/typeAliases&gt;
+</code></pre></li><li>每一个在包 domain.blog 中的 Java Bean，在没有注解的情况下，会使用 Bean 的首字母小写的非限定类名来作为它的别名。 比如 domain.blog.Author 的别名为 author；若有注解，则别名为其注解值。</li></ul>
+</li></ul>
+<h2 id="-">十一  使用包扫描的方式来加载我们所有的接口</h2>
+<p>使用Package的的方式来指定我们扫描那些包下面的所有接口,然后为这些接口产生代理</p>
+<pre><code>     &lt;mappers&gt;
+      &lt;!--   &lt;mapper class=&quot;com.zhz.demo3.UserMapper&quot;/&gt; --&gt;
+      &lt;package name=&quot;com.zhz.demo3&quot;/&gt;
+      &lt;/mappers&gt;
+</code></pre>
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
